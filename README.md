@@ -125,33 +125,47 @@ The app serves as a **visual and interactive layer** for exploring model outputs
 
 ## 📁 Repository Structure
 
-├── app.py                  # Streamlit application  
-├── model_utils.py          # Model + generation logic  
-├── notebooks/              # EDA and modeling notebooks  
-├── outputs/  
-│   ├── artifacts/          # Saved models  
-│   ├── results/            # Generated candidates  
-├── data/  
-│   ├── raw/  
-│   ├── processed/  
-├── requirements.txt  
-└── README.md  
+ADS-599-CAPSTONE-Team-8/
+│
+├── app.py                  # Streamlit web application
+├── model_utils.py          # Model + generation logic
+│
+├── data/
+│   ├── raw/                # Original datasets (ChEMBL, etc.)
+│   └── processed/          # Cleaned + model-ready data
+│
+├── notebooks/              # EDA, preprocessing, modeling notebooks
+│
+├── outputs/
+│   ├── artifacts/          # Saved models (.pt files, metadata)
+│   └── results/            # Generated molecules + evaluation outputs
+│
+├── requirements.txt        # Python dependencies
+└── README.md               # Project documentation
 
 ## ⚙️ How to Run
 
 ### 1. Clone the repo
+```
 git clone https://github.com/KatieKimberling/ADS-599-CAPSTONE-Team-8.git  
 cd ADS-599-CAPSTONE-Team-8  
+```
 
 ### 2. Create environment
+```
 conda create -n capstone_env python=3.11  
 conda activate capstone_env  
+```
 
 ### 3. Install dependencies
-pip install -r requirements.txt  
+```
+pip install -r requirements.txt
+```
 
 ### 4. Run the app
-streamlit run app.py  
+```
+steam_mvp.py run app.py
+```
 
 ## 🧪 How to Use
 
