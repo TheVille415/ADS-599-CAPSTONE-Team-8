@@ -125,29 +125,39 @@ The app serves as a **visual and interactive layer** for exploring model outputs
 
 ## 📁 Repository Structure
 
+```bash
+ADS-599-CAPSTONE-Team-8/
 ├── app.py
 ├── model_utils.py
 ├── data/
+│   ├── raw/
+│   └── processed/
 ├── notebooks/
 ├── outputs/
+│   ├── artifacts/
+│   └── results/
 ├── requirements.txt
 └── README.md
+```
+---
 
-├── app.py                  # Streamlit web application
-├── model_utils.py          # Model + generation logic
-│
-├── data/
-│   ├── raw/                # Original datasets (ChEMBL, etc.)
-│   └── processed/          # Cleaned + model-ready data
-│
-├── notebooks/              # EDA, preprocessing, modeling notebooks
-│
-├── outputs/
-│   ├── artifacts/          # Saved models (.pt files, metadata)
-│   └── results/            # Generated molecules + evaluation outputs
-│
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
+### Description
+
+- **app.py** – Streamlit web application  
+- **model_utils.py** – Model training and generation logic  
+
+- **data/**
+  - **raw/** – Original datasets (ChEMBL, etc.)  
+  - **processed/** – Cleaned and model-ready data  
+
+- **notebooks/** – EDA, preprocessing, and modeling notebooks  
+
+- **outputs/**
+  - **artifacts/** – Saved models (.pt files, metadata)  
+  - **results/** – Generated molecules and evaluation outputs  
+
+- **requirements.txt** – Python dependencies  
+- **README.md** – Project documentation  
 
 ## ⚙️ How to Run
 
