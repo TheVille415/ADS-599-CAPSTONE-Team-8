@@ -125,8 +125,14 @@ The app serves as a **visual and interactive layer** for exploring model outputs
 
 ## 📁 Repository Structure
 
-ADS-599-CAPSTONE-Team-8/
-│
+├── app.py
+├── model_utils.py
+├── data/
+├── notebooks/
+├── outputs/
+├── requirements.txt
+└── README.md
+
 ├── app.py                  # Streamlit web application
 ├── model_utils.py          # Model + generation logic
 │
