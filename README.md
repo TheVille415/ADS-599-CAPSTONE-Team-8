@@ -11,7 +11,7 @@
 
 ## 📌 Overview
 
-This project builds an end-to-end generative AI pipeline for antiviral drug discovery. It focuses on accelerating the transition from a **known active compound (“hit”)** to a **viable candidate (“lead”)** by generating and filtering novel molecular structures.
+This project builds an end-to-end generative AI pipeline designed to address the **lead optimization bottleneck in drug discovery**, where identifying improved molecular candidates remains slow and resource-intensive. It focuses on accelerating the transition from a **known active compound (“hit”)** to a **viable candidate (“lead”)** by generating and filtering novel molecular structures.
 
 The system uses SMILES-based molecular representations, deep learning, and rule-based filtering to propose new antiviral candidates that satisfy drug-like constraints.
 
@@ -26,6 +26,13 @@ The goal of this project is to:
 - Provide a **decision-support tool** for early-stage drug discovery  
 
 Rather than replacing laboratory validation, this system acts as a **computational screening layer** to prioritize candidates.
+
+## 🚀 Highlights
+
+- Built an end-to-end generative AI pipeline for molecular discovery  
+- Compared rule-based and neural sequence generation approaches  
+- Designed domain-specific evaluation metrics for generative chemistry  
+- Developed a live Streamlit app for interactive molecule exploration  
 
 ## 🧠 Key Features
 
@@ -69,6 +76,7 @@ The system follows a structured pipeline:
    - Streamlit web app interface  
 
 ## 📊 Results Summary
+Performance also varied across training and test splits, with the LSTM maintaining high novelty but showing reduced stability in preserving drug-like constraints on unseen data.
 
 - **Baseline Model**
   - Higher validity rate  
@@ -80,9 +88,9 @@ The system follows a structured pipeline:
   - All valid outputs passed Lipinski rules  
 
 **Key takeaway:**  
-There is a tradeoff between **quantity (baseline)** and **quality + novelty (LSTM)**.
-## 🌐 Web Application
+There is a fundamental tradeoff between **reliability (baseline validity)** and **innovation (LSTM novelty)**, highlighting the challenges of generative modeling under constrained data conditions.
 
+## 🌐 Web Application
 🔗 **Live App:**  
 https://ads-599-capstone-team-8-ga4zqwdzwasig2jxp33hgr.streamlit.app/
 
@@ -127,39 +135,64 @@ The app serves as a **visual and interactive layer** for exploring model outputs
 
 ```bash
 ADS-599-CAPSTONE-Team-8/
+│
 ├── app.py
-├── model_utils.py
-├── data/
-│   ├── raw/
-│   └── processed/
-├── notebooks/
-├── outputs/
-│   ├── artifacts/
-│   └── results/
+├── README.md
 ├── requirements.txt
-└── README.md
+│
+├── src/
+│   └── model_utils.py
+│
+├── data/
+│   ├── *.csv
+│   └── smiles_vocab.json
+│
+├── notebooks/
+│   └── *.ipynb
+│   
+├── notebooks_supporting/
+│   └── *.ipynb
+│
+├── outputs/
+│   ├── artifacts/ # trained models + metadata
+│   └── *.csv      # final evaluation outputs
 ```
 ---
 
 ### Description
 
-- **app.py** – Streamlit web application  
-- **model_utils.py** – Model training and generation logic  
+- **app.py** – Streamlit web application
+- **requirements.txt** – Python dependencies  
+- **README.md** – Project documentation
+
+- **src/**
+   -  **model_utils.py** – Model training and generation logic  
 
 - **data/**
-  - **raw/** – Original datasets (ChEMBL, etc.)  
-  - **processed/** – Cleaned and model-ready data  
+  - Central data directory for all stages of the pipeline  
+  - Includes:
+    - `raw_j05_antivirals.csv` – Original antiviral dataset from ChEMBL  
+    - `clean_j05_antivirals.csv` – Cleaned and standardized SMILES data  
+    - `j05_tokenized_smiles.csv` – Tokenized sequences used for model training  
+    - `train_smiles_j05.csv` – Training subset for generative modeling  
+    - `seed_molecules_j05.csv` – Reference molecules for similarity scoring  
+    - `j05_mechanisms.csv` – Mechanism annotations  
+    - `smiles_vocab.json` – Character-level vocabulary for SMILES encoding  
 
-- **notebooks/** – EDA, preprocessing, and modeling notebooks  
+- **notebooks/**
+   - EDA, preprocessing, and modeling notebooks
+
+- **notebooks_supporting/**  
+  - Contains exploratory, earlier, and supporting notebooks used during development  
+  - Includes initial data pulls, alternative dataset experiments, and early pipeline iterations  
+  - These notebooks provide insight into the evolution of the project but are not required to run the final workflow  
 
 - **outputs/**
   - **artifacts/** – Saved models (.pt files, metadata)  
-  - **results/** – Generated molecules and evaluation outputs  
-
-- **requirements.txt** – Python dependencies  
-- **README.md** – Project documentation  
+  - **CSV outputs** – Final evaluation summaries and candidate tables used in the paper and analysis
 
 ## ⚙️ How to Run
+All results in this project are reproducible using the provided notebooks and saved model artifacts.
 
 ### 1. Clone the repo
 ```
@@ -180,7 +213,7 @@ pip install -r requirements.txt
 
 ### 4. Run the app
 ```
-steam_mvp.py run app.py
+streamlit run app.py
 ```
 
 ## 🧪 How to Use
@@ -224,4 +257,3 @@ AI tools were used to support development, planning, and drafting. All outputs w
 ## 🔑 Final Notes
 
 This project demonstrates how generative AI can be integrated into a practical pipeline for molecular discovery, with a clear path toward real-world research support.
-
